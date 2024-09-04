@@ -8,6 +8,7 @@
 // della categoria ed il tipo di articolo che si sta visualizzando (prodotto, cibo, gioco, cuccia).
 
 require_once __DIR__ . '/Model/Item.php';
+require_once __DIR__ . '/Model/Category.php';
 require_once __DIR__ . '/data/db.php';
 
 ?>
@@ -48,37 +49,40 @@ require_once __DIR__ . '/data/db.php';
 
     <div class="container spacing-container">
         <div class="row g-3 py-4">
-            <?php foreach($db as $product): ?>
+            <?php foreach ($db as $product): ?>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                     <div class="card card-box shadow-sm h-100">
-                        <!-- <img src="..." class="card-img-top p-4" alt="..."> -->
+                        <img src="./img/<?php echo $product->image ?>" class="card-img-top p-4" alt="">
                         <div class="card-body p-4">
-                            <h4 class="card-title text-center py-2">
+                            <h5 class="card-title text-center py-2">
                                 <?php echo $product->name ?>
-                            </h4>
+                            </h5>
                             <h5>Descrizione</h5>
                             <p><?php echo $product->description ?></p>
-                            <!-- <div class="d-flex justify-content-between spacing"> -->
-                                <!-- <div class="col py-2"> -->
-                                    <!-- <h5 class="text-center">Tipo prodotto</h5> -->
-                                    <!-- <ul class="text-center"> -->
-                                    <!-- </ul> -->
-                                <!-- </div> -->
-                                <!-- <div class="col py-2"> -->
-                                    <!-- <h5 class="text-center">Tipo di animale</h5> -->
-                                    <!-- <ul class="text-center"> -->
-                                    <!-- </ul> -->
-                                <!-- </div> -->
-                            <!-- </div> -->
-                            <h5 class="py-2">Rilascio: <?php echo $product->release ?></h5>
-                            <h5 class="py-2">Prezzo: <?php echo $product->price ?></h5>
+                            <div class="d-flex justify-content-between spacing">
+                                <div class="col py-2">
+                                    <h5>Tipo prodotto</h5>
+                                    <ul>
+                                        <?php foreach ($product->type as $tipo): ?>
+                                            <li><?php echo $tipo; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <div class="col py-2">
+                                    <?php if (isset($product->category)): ?>
+                                        <h4 class="badge text-bg-success">Solo per <?php echo $product->category ?? '-' ?></h4>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <h6 class="py-2">Rilascio:</h6> <?php echo $product->getEuropeanDate(); ?>
+                            <h6 class="py-2">Prezzo: <?php echo $product->getFormattedPrice(); ?> &euro;</h6>
                             <div class="btn-container d-flex justify-content-center align-items-center py">
-                                <a href=" #" class="btn-info">Acquista ora</a>
+                                <a href="#" class="btn-info">Acquista ora</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            <? endforeach ?>
+            <?php endforeach; ?>
         </div>
 
 </body>
