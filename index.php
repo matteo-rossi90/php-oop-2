@@ -30,6 +30,7 @@ require_once __DIR__ . '/data/db.php';
 
 <body>
 
+    <!-- header -->
     <header id="navbar">
         <div class="container py-2 d-flex justify-content-between align-items-center">
             <h2 class="white-text">PetShop</h2>
@@ -47,10 +48,13 @@ require_once __DIR__ . '/data/db.php';
         </div>
     </header>
 
+    <!-- parte relativa alle cards -->
     <div class="container spacing-container">
         <div class="row g-3 py-4">
             <?php foreach ($db as $product): ?>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+
+                    <!-- cards con informazioni -->
                     <div class="card card-box shadow-sm h-100">
                         <img src="./img/<?php echo $product->image ?>" class="card-img-top p-4" alt="">
                         <div class="card-body p-4">
