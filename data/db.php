@@ -17,9 +17,9 @@ $db = [
         ['svago', 'quotidianità']),
     new Category('Snack dentale', "snack_cane.jpg", 'Lorem ipsum sit amet', 15.78, '2023-09-23', 'Cani',
         ['alimentazione', 'cibo solido']),
-    new Category('Cuccia piccola', "cuccia_grande.jpg", 'Lorem ipsum sit amet', 13.23, '2023-09-23', 'Gatti',
+    new Category('Cuccia piccola', "cuccia_gatti.jpg", 'Lorem ipsum sit amet', 13.23, '2023-09-23', 'Gatti',
         ['cucce', 'strumenti']),
-    new Category('Cuccia grande', "cuccia_gatti.jpg", 'Lorem ipsum sit amet', 14.98, '2023-09-23', 'Cani',
+    new Category('Cuccia grande', "cuccia_grande.jpg", 'Lorem ipsum sit amet', 14.98, '2023-09-23', 'Cani',
         ['cucce', 'strumenti']),
 
 ];
