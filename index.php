@@ -59,24 +59,31 @@ require_once __DIR__ . '/data/db.php';
                             </h5>
                             <h5>Descrizione</h5>
                             <p><?php echo $product->description ?></p>
-                            <div class="d-flex justify-content-between spacing">
-                                <div class="col py-2">
-                                    <h5>Tipo prodotto</h5>
-                                    <ul>
-                                        <?php foreach ($product->type as $tipo): ?>
-                                            <li><?php echo $tipo; ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                                <div class="col py-2">
-                                    <?php if (isset($product->category)): ?>
-                                        <h4 class="badge text-bg-success">Solo per <?php echo $product->category ?? '-' ?></h4>
-                                    <?php endif; ?>
-                                </div>
+
+                            <div class="d-flex py-1">
+                                <h6>Tipo:</h6>
+                                <ul class="px-5">
+                                    <?php foreach ($product->type as $tipo): ?>
+                                        <li><?php echo $tipo; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
                             </div>
-                            <h6 class="py-2">Rilascio:</h6> <?php echo $product->getEuropeanDate(); ?>
-                            <h6 class="py-2">Prezzo: <?php echo $product->getFormattedPrice(); ?> &euro;</h6>
-                            <div class="btn-container d-flex justify-content-center align-items-center py">
+                            <div class="py-1">
+                                <?php if (isset($product->category)): ?>
+                                    <h4 class="badge rounded-pill text-bg-warning">Solo per <?php echo $product->category ?? '-' ?></h4>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="d-flex py-1 align-items-center">
+                                <h6 class="py-1">Rilascio:</h6>
+                                <span class="px-4"><?php echo $product->getEuropeanDate(); ?> </span>
+                            </div>
+                            <div class=" d-flex py-1 align-items-center">
+                                    <h6 class="py-1">Prezzo: </h6>
+                                    <span class="px-4"> <?php echo $product->getFormattedPrice(); ?> &euro; </span>
+
+                            </div>
+                            <div class="py-3 btn-container d-flex justify-content-center align-items-center py">
                                 <a href="#" class="btn-info">Acquista ora</a>
                             </div>
                         </div>

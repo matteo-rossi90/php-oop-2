@@ -46,6 +46,10 @@ img {
     gap: 3rem;
 }
 
+.box{
+    display: inline;
+}
+
 
 .btn-info {
     padding: 8px 16px;
