@@ -3,18 +3,18 @@
 
 class Item {
 
-    public $name;
+    protected $name;
     public $image;
     public $description;
-    public $price; 
+    protected $price; 
     public $release;
     public $type = [];
 
     function __construct( string $_name, string $_image, string $_description, float $_price, string $_release, array $_type){
-        $this->name = $_name;
+        $this->setName($_name);
         $this->image = $_image;
         $this->description = $_description;
-        $this->price = $_price;
+        $this->setPrice($_price);
         $this->release = $_release;
         $this->type = $_type;
 
@@ -32,4 +32,33 @@ class Item {
     {
         return number_format($this->price, 2, ',', '.');
     }
+
+    //metodo per impostare i controlli che riguardano il parametro "$name"
+    public function setName($name){
+        if(empty($name) || strlen($name) < 4){ //se non è presente il nome o ha una lunghezza inferiore a 4 caratteri
+            throw new Exception ('Il nome del prodotto deve avere almeno quattro caratteri'); //compare il messaggio di errore
+        }
+        $this->name = $name;
+    }
+
+    //metodo per ottenere il parametro "$name"
+    public function getName(){
+        return $this->name;
+    }
+
+    //metodo per impostare i controlli che riguardano il parametro "$price"
+    public function setPrice($price)
+    {
+        if (!is_numeric($price) || $price < 0) { //se il prezzo non è un numero o è negativo
+            throw new Exception('Il prezzo deve essere un numero positivo'); //compare il messaggio di errore
+        }
+        $this->price = $price;
+    }
+
+    //metodo per ottenere il parametro "$price"
+    public function getPrice()
+    {
+        return $this->getFormattedPrice();
+    }
+
 }

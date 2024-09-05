@@ -61,7 +61,13 @@ require_once __DIR__ . '/data/db.php';
                         <img src="./img/<?php echo $product->image ?>" class="card-img-top p-4" alt="">
                         <div class="card-body p-4">
                             <h5 class="card-title text-center py-2">
-                                <?php echo $product->name ?>
+                                <?php
+                                try {
+                                    echo $product->getName();
+                                } catch (Exception $e) {
+                                    echo 'Errore: ' . $e->getMessage();
+                                } 
+                                ?>
                             </h5>
                             <h6>Descrizione</h6>
                             <p><?php echo $product->description ?></p>
@@ -70,7 +76,9 @@ require_once __DIR__ . '/data/db.php';
                                 <h6>Tipo:</h6>
                                 <ul class="px-5">
                                     <?php foreach ($product->type as $tipo): ?>
-                                        <li><?php echo $tipo; ?></li>
+                                        <li>
+                                            <?php echo $tipo; ?>
+                                        </li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -89,7 +97,16 @@ require_once __DIR__ . '/data/db.php';
                             </div>
                             <div class=" d-flex py-1 align-items-center">
                                 <h6 class="py-1">Prezzo: </h6>
-                                <span class="px-4"> <?php echo $product->getFormattedPrice(); ?> &euro; </span>
+                                <span class="px-4"> 
+                                    <?php
+                                        try {
+                                            echo $product->getPrice();
+                                        } catch (Exception $e) {
+                                            echo 'Errore: ' . $e->getMessage();
+                                        }  
+                                    ?> 
+                                    &euro; 
+                                </span>
 
                             </div>
                             <div class="py-3 btn-container d-flex justify-content-center align-items-center py">
