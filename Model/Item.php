@@ -8,9 +8,9 @@ class Item {
     public $description;
     public $price; 
     public $release;
-    public $type;
+    public $type = [];
 
-    function __construct( $_name, $_image, $_description, $_price, $_release, $_type){
+    function __construct( string $_name, string $_image, string $_description, float $_price, string $_release, array $_type){
         $this->name = $_name;
         $this->image = $_image;
         $this->description = $_description;
